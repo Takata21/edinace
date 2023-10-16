@@ -5,7 +5,14 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
+  --footer-bg-color: #777;
   --background-end-rgb: 255, 255, 255;
+  --footer-bg-color: #777;
+  --background-color: white;
+  /* Color de fondo predeterminado */
+  --text-color: black;
+  /* Color de texto predeterminado */
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +24,8 @@
 }
 
 body {
+  min-height: 100vh;
+  max-width: 1440px;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,4 +33,142 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pbr {
+  border: 1px solid red;
+
+}
+
+.dark {
+  --background-color: #18202b;
+  /* Color de fondo en modo oscuro */
+  --text-color: white;
+  /* Color de texto en modo oscuro */
+}
+
+
+
+/*----------------Mobile Menu-----------------*/
+
+.menu {
+  visibility: hidden;
+  display: none;
+  width: 100vw;
+  height: 0;
+  /* overflow: hidden; */
+  background-color: #fff;
+
+}
+
+.menu.active {
+  display: block;
+  visibility: visible;
+  height: max-content;
+
+}
+
+@media screen and (min-width:1024px) {
+  .menu {
+      visibility: visible;
+      margin-top: 0;
+      position: relative;
+      height: auto;
+      display: block;
+  }
+
+  .menu.active {
+      height: max-content;
+  }
+}
+
+.links-transitions {
+  transition: font-weight 1s ease-in;
+
+}
+
+@media screen and (min-width:1080px) {
+  .links-transitions::after {
+      background-color: #eb660c;
+      bottom: -4px;
+      content: "";
+      height: 2px;
+      left: 0px;
+      position: absolute;
+      transform: scaleX(0);
+      transition: transform 0.3s ease 0s;
+      width: 100%;
+  }
+
+  .links-transitions:hover::after {
+      transform: scale(1);
+  }
+}
+
+/*----------------Carousel-----------------*/
+
+
+.gradient-carousel {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(177deg, rgba(0, 0, 0, 1) 2%, rgba(0, 0, 0, 0.603448275862069) 20%, rgba(0, 0, 0, 0.5086206896551724) 50%, rgba(0, 0, 0, 0.43534482758620685) 79%, rgba(0, 0, 0, 0.7413793103448276) 98%);
+
+}
+
+.carousel div {
+  border: none;
+  border-radius: 0;
+}
+
+.carousel button.group {
+  display: none;
+
+}
+
+.arrow {
+  animation: arrow 4s infinite;
+}
+
+@keyframes arrow {
+
+  from {
+      transform: translateX(0%);
+  }
+
+  50% {
+
+      transform: translateX(50%);
+  }
+
+  to {
+      transform: translateX(0%);
+  }
+}
+
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  padding: 10px;
+  border: 1px solid #ffffff20;
+
+}
+
+.link-gradient {
+  background: rgb(59, 130, 246);
+  background: to right, rgb(56, 189, 248) 0%, rgb(59, 130, 246);
+}
+
+#date-time-input::-webkit-calendar-picker-indicator {
+  all: unset;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background-image: url('/public/images/calendar.svg');
+  color: white;
 }

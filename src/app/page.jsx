@@ -1,7 +1,11 @@
+import { MoonEclipsesInfo } from '@/components/MoonEclipsesInfo'
+import { Carousel } from '@/components/Slider/Slider'
+
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      example!
+    <main className="relative min-h-screen overflow-x-hidden">
+      <Carousel />
+      <MoonEclipsesInfo />
     </main>
   )
 }
